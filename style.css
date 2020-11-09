@@ -1,0 +1,96 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif ;
+}
+body{
+    display: flex;
+    align-items: center; /*deixa os itens no centro */
+    justify-content: center;
+    min-height: 100vh; /*altura minima da lampada em relação ao topo*/
+    background:black;
+}
+
+.lamp{
+    position: relative; /*faz o elemento aceitar outras propriedades*/
+    height: 500px; 
+    width: 450px;
+}
+
+.lamp img{
+    position: absolute; /* uma lampada fica em cima da outra*/
+    height: 500px; /*ajustar a altura da imagem*/
+    width: 100%; /*ajustar a largura da imagem*/
+    margin-top: -50px; /*distancia que ela fica de outro objeto*/
+}
+
+.lamp label{ /*turn on*/
+    position: absolute; /*deixa alinhado com a lampada*/
+    bottom: 0px;
+    left: 33%; /*posição direita-esquerda do turn on*/
+    /* transform: translateX(-40%); */
+}
+
+.lamp label span{ /*quadradinho do turn on*/
+    color: #ffffff;
+    font-size: 20px;
+    display: block;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    width: 180px;
+    height: 50px;    
+    text-align: center;
+    line-height: 48px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.lamp label span:before{
+    content: "TURN OFF";
+}
+.lamp label span:hover{ /*deixar bonito quando passa o mouse em cima*/
+    background: #fff;
+    color: #111111;
+}
+
+.lamp img#lamp-on{
+    opacity: 0; /*deixa a lampada ligada transparente*/
+    animation: glow 3s linear infinite; /*dá o nome da animação de glow, para arrumar ali embaixo*/
+}
+
+@keyframes glow {
+    0%{
+        opacity: 1;
+    }
+    5%{
+        opacity: 1;
+    }
+    70%{
+        opacity: 1;
+    }
+    74%{
+        opacity: 0;
+    }
+    80%{
+        opacity: 1;
+    }
+    84%{
+        opacity: 0;
+    }
+    90%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+#btn:checked ~ img#lamp-on{
+    animation: none; /*se o negócio estiver com check, a img de lam ligada não aparece*/
+}
+#btn:checked ~ label span:before{
+    content: "TURN ON";
+}
+.lamp input{
+    display: none; /*para o botão não aparecer*/
+}
